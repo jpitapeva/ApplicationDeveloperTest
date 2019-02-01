@@ -13,7 +13,7 @@ As a user, I need a truck registry where I can:</br>
 Secondary requirement</br>
 There may be several truck models.
 
-Technical requirements
+Technical requirements</br>
 • Use ASP.NET Core </br>
 • Use local database</br>
 • Create unit tests</br>
