@@ -2,7 +2,7 @@
 Volvo
 
 # Requirements
-Primary requirement
+Primary requirement</br>
 As a user, I need a truck registry where I can:</br>
 
 1-View the registered trucks;</br>
