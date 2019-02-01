@@ -10,7 +10,7 @@ As a user, I need a truck registry where I can:</br>
 3-Exclude a truck; </br>
 4-Insert a new truck.</br>
 
-Secondary requirement
+Secondary requirement</br>
 There may be several truck models.
 
 Technical requirements
