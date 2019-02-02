@@ -1,0 +1,13 @@
+﻿@model Volvo.Models.Front
+
+@{
+    ViewBag.Title = "Volvo Trucks";
+}
+
+<h2>Add an Opera</h2>
+
+@using (Html.BeginForm("Create", "TruckController", FormMethod.Post))
+{
+    <input type="submit" value="Create" />
+    @Html.ActionLink("Back to List", "Index")
+}
