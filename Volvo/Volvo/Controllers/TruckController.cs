@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 using Volvo.Repository.Context;
+using Volvo.Services;
+using Volvo.ViewModel;
 
 namespace Volvo.Controllers.v1
 {
@@ -15,10 +17,12 @@ namespace Volvo.Controllers.v1
     public class TruckController : Controller
     {
         private readonly TruckContext _contextDb;
+        private readonly ITruckServices _itruckServices;
 
-        public TruckController(TruckContext contextDb)
+        public TruckController(TruckContext contextDb, ITruckServices itruckServices)
         {
             _contextDb = contextDb;
+            _itruckServices = itruckServices;
         }
 
         [Microsoft.AspNetCore.Mvc.HttpGet]
@@ -30,9 +34,9 @@ namespace Volvo.Controllers.v1
 
         [Microsoft.AspNetCore.Mvc.HttpGet]
         [Microsoft.AspNetCore.Mvc.Route("getTruckById/{id}")]
-        public Truck GetTruck(int id)
+        public Truck GetTruckById(Guid id)
         {
-            Truck truck = _contextDb.Truck.Find(id);
+            Truck truck = _contextDb.Truck.FirstOrDefault(c => c.Id == id);
 
             if (truck == null)
             {
@@ -40,6 +44,31 @@ namespace Volvo.Controllers.v1
             }
 
             return truck;
+        }
+
+        [Microsoft.AspNetCore.Mvc.HttpDelete]
+        [Microsoft.AspNetCore.Mvc.Route("deleteTruckById/{id}")]
+        public IActionResult DeleteTruckById(Guid id)
+        {
+            _itruckServices.DeleteTruckViewModel(id);
+
+            return Ok();
+        }
+
+        [Microsoft.AspNetCore.Mvc.HttpPut]
+        [Microsoft.AspNetCore.Mvc.Route("updateTruckById/{updateTruckViewModel}")]
+        public IActionResult UpdateTruckById(UpdateTruckViewModel updateTruckViewModel)
+        {
+            try
+            {
+                _itruckServices.UpdateTruckViewModel(updateTruckViewModel);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            return Ok();
         }
     }
 }

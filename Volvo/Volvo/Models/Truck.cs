@@ -17,6 +17,22 @@ namespace Volvo.Models
             TruckModel = truckModel;
         }
 
+        public void UpdateTruck(Guid truckModelId, string chassis, DateTime manufactureYear, int responsableId, bool status, TruckModel truckModel)
+        {
+            TruckModelId = truckModelId;
+            Chassis = chassis;
+            ManufactureYear = manufactureYear;
+            ResponsableId = responsableId;
+            Status = status;
+            TruckModel = truckModel;
+        }
+
+        public void DeleteTruck(Guid truck)
+        {
+            Id = truck;
+        }
+
+
         [Required]
         public Guid Id { get; set; }
         [Required]

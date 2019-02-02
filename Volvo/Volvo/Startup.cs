@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using Volvo.Models;
 using Volvo.Repository.Context;
+using Volvo.Services;
 
 namespace Volvo
 {
@@ -21,6 +23,9 @@ namespace Volvo
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddScoped(typeof(iapp<>), typeof(Services<>));
+            services.AddScoped<ITruckServices, TruckServices>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;

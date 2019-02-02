@@ -10,7 +10,7 @@ namespace Volvo.Repository.Context
         public TruckContext(DbContextOptions<TruckContext> options) : base(options) { }
 
         public DbSet<Truck> Truck { get; set; }
-       // public DbSet<TruckModel> TruckModels { get; set; }
+        public DbSet<TruckModel> TruckModels { get; set; }
        
         protected override void OnModelCreating(ModelBuilder builder)
         {
