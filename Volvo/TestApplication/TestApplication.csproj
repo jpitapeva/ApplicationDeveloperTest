@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Database\Database.sqlproj" />
     <ProjectReference Include="..\Volvo\Volvo.csproj" />
   </ItemGroup>
 

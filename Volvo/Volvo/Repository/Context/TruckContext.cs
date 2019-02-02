@@ -5,12 +5,12 @@ using Volvo.Models;
 
 namespace Volvo.Repository.Context
 {
-    public sealed class VolvoContext : DbContext
+    public sealed class TruckContext : DbContext
     {
-        public VolvoContext(DbContextOptions<VolvoContext> options) : base(options) { }
+        public TruckContext(DbContextOptions<TruckContext> options) : base(options) { }
 
         public DbSet<Truck> Truck { get; set; }
-        public DbSet<TruckModel> TruckModels { get; set; }
+       // public DbSet<TruckModel> TruckModels { get; set; }
        
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -23,7 +23,7 @@ namespace Volvo.Repository.Context
             builder.Entity<TruckModel>().Property<DateTime>("DateTimeModification");
 
             builder.Entity<TruckModel>().HasKey(rf => new { rf.Id, rf.TruckId });
-            builder.Entity<TruckModel>().HasOne(rf => rf.Truck).WithOne(r => r.TruckModels);
+            builder.Entity<TruckModel>().HasOne(rf => rf.Truck).WithOne(r => r.TruckModel);
 
             base.OnModelCreating(builder);
         }

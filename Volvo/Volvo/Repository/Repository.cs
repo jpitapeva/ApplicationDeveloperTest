@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Volvo.Interface;
+using Volvo.Models;
 using Volvo.Repository.Context;
 
 namespace Volvo.Repository
@@ -13,11 +14,11 @@ namespace Volvo.Repository
     {
         private bool _disposed;
         protected DbSet<TEntity> DbSet;
-        protected VolvoContext Context;
+        protected TruckContext Context;
         protected DbContext DbContext { get; set; }
         public IConfiguration Configuration { get; }
 
-        public Repository(VolvoContext context, IConfiguration configuration)
+        public Repository(TruckContext context, IConfiguration configuration)
         {
             Context = context;
             DbSet = context.Set<TEntity>();

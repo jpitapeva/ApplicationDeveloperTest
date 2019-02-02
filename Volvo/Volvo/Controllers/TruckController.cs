@@ -1,5 +1,4 @@
-﻿using OperasWebsites.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,12 +6,18 @@ using Volvo.Models;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using Volvo.Repository.Context;
 
 namespace Volvo.Controllers
 {
     public class TruckController : ApiController
     {
-        private readonly TruckDB _contextDb = new TruckDB();
+        private readonly TruckContext _contextDb;
+
+        public TruckController(TruckContext contextDb)
+        {
+            _contextDb = contextDb;
+        }
 
         public IEnumerable<Truck> GetTruck()
         {

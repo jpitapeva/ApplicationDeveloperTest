@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Volvo.Models
 {
     public class TruckModel
     {
-        public TruckModel(DateTime modelYear, string color, string engine, string potence, int responsableId, bool status, Truck truck, Guid truckId)
+        public TruckModel() { }
+
+        public TruckModel(DateTime modelYear, string color, string engine, string potence, int responsableId, bool status)
         {
             Id = Guid.NewGuid();
             ModelYear = modelYear;
@@ -13,20 +16,22 @@ namespace Volvo.Models
             Potence = potence;
             ResponsableId = responsableId;
             Status = status;
-            Truck = truck;
-            TruckId = truckId;
         }
-
+        [Required]
         public Guid Id { get; set; }
-        public Guid TruckId { get; private set; }
+        [Required]
+        public Guid TruckId { get;  set; }
+        [Required]
         public DateTime ModelYear { get; private set; }
         public string Color { get; private set; }
         public string Engine { get; private set; }
         public string Potence { get; private set; }
         public DateTime DateTimeCreate { get; set; }
         public DateTime DateTimeModification { get; set; }
+        [Required]
         public int ResponsableId { get; private set; }
         public bool Status { get; private set; }
-        public Truck Truck { get; private set; }
+        [Required]
+        public Truck Truck { get;  set; }
     }
 }

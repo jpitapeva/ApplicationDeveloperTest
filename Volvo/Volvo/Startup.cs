@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using Volvo.Repository.Context;
 
 namespace Volvo
 {
@@ -24,6 +26,8 @@ namespace Volvo
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddDbContext<TruckContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("database")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -59,7 +63,10 @@ namespace Volvo
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
             app.UseSwagger();
-            app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/docs/", "Core API"));
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
         }
     }
 }
