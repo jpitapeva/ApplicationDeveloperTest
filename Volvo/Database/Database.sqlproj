@@ -60,6 +60,8 @@
     <Folder Include="Bkp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Bkp\Volvo.rar" />
+    <None Include="Bkp\Volvo.ldf" />
+    <None Include="Bkp\Volvo.mdf" />
+    <None Include="Bkp\db.rar" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,5 @@
 using System;
 using Volvo.Controllers;
-using Volvo.Controllers.v1;
 using Xunit;
 using TruckServices = Volvo.Services.Interface;
 

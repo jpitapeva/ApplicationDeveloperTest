@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Volvo.Models;
 using Microsoft.AspNetCore.Mvc;
+using Volvo.Models;
 using Volvo.Services;
 using Volvo.ViewModel;
 
-namespace Volvo.Controllers.v1
+namespace Volvo.Controllers
 {
     [System.Web.Http.Route("volvo/v1/[controller]")]
     public class TruckController : Controller
     {
-        private ITruckServices _itruckServices;
+        private readonly ITruckServices _itruckServices;
 
         public TruckController(ITruckServices itruckServices)
         {
