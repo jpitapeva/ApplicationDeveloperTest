@@ -59,4 +59,7 @@
     <Folder Include="Properties" />
     <Folder Include="Bkp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Bkp\Volvo.rar" />
+  </ItemGroup>
 </Project>
