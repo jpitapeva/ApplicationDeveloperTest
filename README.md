@@ -1,6 +1,16 @@
 # ApplicationDeveloperTest
 Volvo
 
+# BackEnd
+BackEnd using swagger for the test, endPoint (/swagger/v1/swagger.json)</br> 
+
+# DB
+DB used SQL Server LocalDb</br>
+
+# Todo
+FrontEnd in RazorPages</br>
+
+
 # Requirements
 Primary requirement</br>
 As a user, I need a truck registry where I can:</br>
