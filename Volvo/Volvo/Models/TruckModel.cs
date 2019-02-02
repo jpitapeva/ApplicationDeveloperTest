@@ -7,6 +7,21 @@ namespace Volvo.Models
     {
         public TruckModel() { }
 
+        public void UpdateTruckModel(DateTime modelYear, string color, string engine, string potence, int responsableId, bool status)
+        {
+            ModelYear = modelYear;
+            Color = color;
+            Engine = engine;
+            Potence = potence;
+            ResponsableId = responsableId;
+            Status = status;
+        }
+
+        public void DeleteTruckModel(Guid truckModelId)
+        {
+            Id = truckModelId;
+        }
+
         public TruckModel(DateTime modelYear, string color, string engine, string potence, int responsableId, bool status)
         {
             Id = Guid.NewGuid();

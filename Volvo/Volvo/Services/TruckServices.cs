@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Volvo.Models;
 using Volvo.Repository.Context;
 using Volvo.ViewModel;
 
@@ -25,14 +25,15 @@ namespace Volvo.Services
                 {
                     throw new Exception("Id not found");
                 }
-                update.UpdateTruck(updateTruckViewModel.TruckModelId,
+                update.UpdateTruck(
                     updateTruckViewModel.Chassis,
+                    updateTruckViewModel.TruckModelId,
                     updateTruckViewModel.ManufactureYear,
                     updateTruckViewModel.ResponsableId,
-                    updateTruckViewModel.Status,
-                    updateTruckViewModel.TruckModel);
+                    updateTruckViewModel.Status);
 
                 _contextDb.Update(update);
+                _contextDb.SaveChanges();
             }
             catch (Exception e)
             {
@@ -59,18 +60,25 @@ namespace Volvo.Services
             }
         }
 
-        public void CreateTruckViewModel(CreateTruckViewModel createTruckViewModel)
+        public void CreateTruckViewModel(CreateTruckViewModel truck)
         {
-           
-            //update.UpdateTruck(updateTruckViewModel.TruckModelId,
-            //    updateTruckViewModel.Chassis,
-            //    updateTruckViewModel.ManufactureYear,
-            //    updateTruckViewModel.ResponsableId,
-            //    updateTruckViewModel.Status,
-            //    updateTruckViewModel.TruckModel);
+            Truck tr = new Truck(truck.Chassis, truck.TruckModelId, truck.ManufactureYear, truck.ResponsableId, truck.Status);
 
-            //_contextDb.Update(update);
-           
+            _contextDb.Add(tr);
+            _contextDb.SaveChanges();
+
+        }
+
+        public List<Truck> GetAllTruck()
+        {
+            var ret = _contextDb.Truck.AsEnumerable();
+            return ret.ToList();
+        }
+
+        public Truck GetTruckById(Guid id)
+        {
+            var ret = _contextDb.Truck.FirstOrDefault(t => t.Id == id);
+            return ret;
         }
     }
 }
