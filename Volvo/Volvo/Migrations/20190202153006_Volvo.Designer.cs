@@ -10,7 +10,7 @@ using Volvo.Repository.Context;
 namespace Volvo.Migrations
 {
     [DbContext(typeof(TruckContext))]
-    [Migration("20190202151733_Volvo")]
+    [Migration("20190202153006_Volvo")]
     partial class Volvo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,8 +23,9 @@ namespace Volvo.Migrations
 
             modelBuilder.Entity("Volvo.Models.Truck", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<Guid>("Id");
+
+                    b.Property<Guid>("TruckModelId");
 
                     b.Property<string>("Chassis")
                         .IsRequired();
@@ -39,16 +40,20 @@ namespace Volvo.Migrations
 
                     b.Property<bool>("Status");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id", "TruckModelId");
+
+                    b.HasAlternateKey("Id");
+
+                    b.HasIndex("TruckModelId")
+                        .IsUnique();
 
                     b.ToTable("Truck");
                 });
 
             modelBuilder.Entity("Volvo.Models.TruckModel", b =>
                 {
-                    b.Property<Guid>("Id");
-
-                    b.Property<Guid>("TruckId");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Color");
 
@@ -66,21 +71,16 @@ namespace Volvo.Migrations
 
                     b.Property<bool>("Status");
 
-                    b.HasKey("Id", "TruckId");
-
-                    b.HasAlternateKey("Id");
-
-                    b.HasIndex("TruckId")
-                        .IsUnique();
+                    b.HasKey("Id");
 
                     b.ToTable("TruckModel");
                 });
 
-            modelBuilder.Entity("Volvo.Models.TruckModel", b =>
+            modelBuilder.Entity("Volvo.Models.Truck", b =>
                 {
-                    b.HasOne("Volvo.Models.Truck", "Truck")
-                        .WithOne("TruckModel")
-                        .HasForeignKey("Volvo.Models.TruckModel", "TruckId")
+                    b.HasOne("Volvo.Models.TruckModel", "TruckModel")
+                        .WithOne("Truck")
+                        .HasForeignKey("Volvo.Models.Truck", "TruckModelId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

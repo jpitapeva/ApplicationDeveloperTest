@@ -6,11 +6,13 @@ using Volvo.Models;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using Microsoft.AspNetCore.Mvc;
 using Volvo.Repository.Context;
 
-namespace Volvo.Controllers
+namespace Volvo.Controllers.v1
 {
-    public class TruckController : ApiController
+    [System.Web.Http.Route("volvo/v1/[controller]")]
+    public class TruckController : Controller
     {
         private readonly TruckContext _contextDb;
 
@@ -19,11 +21,15 @@ namespace Volvo.Controllers
             _contextDb = contextDb;
         }
 
-        public IEnumerable<Truck> GetTruck()
+        [Microsoft.AspNetCore.Mvc.HttpGet]
+        [Microsoft.AspNetCore.Mvc.Route("getAllTruck")]
+        public IEnumerable<Truck> GetAllTruck()
         {
             return _contextDb.Truck.AsEnumerable();
         }
 
+        [Microsoft.AspNetCore.Mvc.HttpGet]
+        [Microsoft.AspNetCore.Mvc.Route("getTruckById/{id}")]
         public Truck GetTruck(int id)
         {
             Truck truck = _contextDb.Truck.Find(id);

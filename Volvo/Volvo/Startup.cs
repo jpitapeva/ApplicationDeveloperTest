@@ -40,6 +40,10 @@ namespace Volvo
                 }));
         }
 
+        public string Email { get; set; }
+
+        public string Name { get; set; }
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -65,7 +69,8 @@ namespace Volvo
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "VolvoTest V1");
+                c.RoutePrefix = string.Empty;
             });
         }
     }

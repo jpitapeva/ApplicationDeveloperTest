@@ -20,8 +20,6 @@ namespace Volvo.Models
         [Required]
         public Guid Id { get; set; }
         [Required]
-        public Guid TruckId { get;  set; }
-        [Required]
         public DateTime ModelYear { get; private set; }
         public string Color { get; private set; }
         public string Engine { get; private set; }

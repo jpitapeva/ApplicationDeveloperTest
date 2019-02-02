@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20190202151502_Volvo.Designer.cs" />
     <Compile Remove="Migrations\20190202151602_Volvo.cs" />
     <Compile Remove="Migrations\20190202151602_Volvo.Designer.cs" />
+    <Compile Remove="Migrations\20190202151733_Volvo.cs" />
+    <Compile Remove="Migrations\20190202151733_Volvo.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

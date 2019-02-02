@@ -22,8 +22,8 @@ namespace Volvo.Repository.Context
             builder.Entity<TruckModel>().Property<DateTime>("DateTimeCreate");
             builder.Entity<TruckModel>().Property<DateTime>("DateTimeModification");
 
-            builder.Entity<TruckModel>().HasKey(rf => new { rf.Id, rf.TruckId });
-            builder.Entity<TruckModel>().HasOne(rf => rf.Truck).WithOne(r => r.TruckModel);
+            builder.Entity<Truck>().HasKey(rf => new { rf.Id, rf.TruckModelId });
+            builder.Entity<Truck>().HasOne(rf => rf.TruckModel).WithOne(r => r.Truck);
 
             base.OnModelCreating(builder);
         }
