@@ -62,7 +62,7 @@ namespace Volvo.Controllers
         /// <param name="updateTruckModelViewModel"></param>
         /// <returns></returns>
         [HttpPut]
-        [Route("updateTruckById")]
+        [Route("updateTruckModelById")]
         public IActionResult UpdateTruckModelById([FromBody]UpdateTruckModelViewModel updateTruckModelViewModel)
         {
             try

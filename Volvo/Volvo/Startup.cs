@@ -9,6 +9,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using Volvo.Models;
 using Volvo.Repository.Context;
 using Volvo.Services;
+using Volvo.Services.Interface;
 
 namespace Volvo
 {
@@ -23,8 +24,8 @@ namespace Volvo
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddScoped(typeof(iapp<>), typeof(Services<>));
             services.AddScoped<ITruckServices, TruckServices>();
+            services.AddScoped<ITruckModelServices, TruckModelServices>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {

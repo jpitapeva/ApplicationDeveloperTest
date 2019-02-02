@@ -46,7 +46,7 @@ namespace Volvo.Services
         {
             try
             {
-                var delete = _contextDb.TruckModels.FirstOrDefault(s => s.Id == id);
+                var delete = _contextDb.TruckModel.FirstOrDefault(s => s.Id == id);
                 if (delete == null)
                 {
                     throw new Exception("Id not found");
@@ -75,13 +75,13 @@ namespace Volvo.Services
 
         public List<TruckModel> GetAllTruckModel()
         {
-            var ret = _contextDb.TruckModels.AsEnumerable();
+            var ret = _contextDb.TruckModel.AsEnumerable();
             return ret.ToList();
         }
 
         public TruckModel GetTruckModelById(Guid id)
         {
-            var ret = _contextDb.TruckModels.FirstOrDefault(t => t.Id == id);
+            var ret = _contextDb.TruckModel.FirstOrDefault(t => t.Id == id);
             return ret;
         }
 
