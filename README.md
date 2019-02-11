@@ -7,7 +7,6 @@ BackEnd using swagger for the test, endPoint (/swagger/v1/swagger.json)</br>
 # DB
 DB used SQL Server LocalDb</br>
 
-# TODO FrontEnd in RazorPages</br>
 
 
 # Requirements
